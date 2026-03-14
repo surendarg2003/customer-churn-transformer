@@ -5,9 +5,9 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 
 app = Flask(__name__)
 
-# load model
-tokenizer = DistilBertTokenizer.from_pretrained("model")
-model = DistilBertForSequenceClassification.from_pretrained("model")
+# load model directly from HuggingFace
+tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
+model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased")
 
 model.eval()
 
