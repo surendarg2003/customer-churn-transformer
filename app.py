@@ -1,32 +1,22 @@
 from flask import Flask, render_template, request
-import torch
-import torch.nn.functional as F
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from transformers import pipeline
 
 app = Flask(__name__)
 
-# load model directly from HuggingFace
-tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased")
-model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased")
-
-model.eval()
-
-device = torch.device("cpu")
-model.to(device)
+# load transformer pipeline
+classifier = pipeline(
+    "text-classification",
+    model="distilbert-base-uncased"
+)
 
 
 def predict_churn(text):
 
-    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
-    inputs = {k: v.to(device) for k, v in inputs.items()}
+    result = classifier(text)[0]
 
-    with torch.no_grad():
-        outputs = model(**inputs)
+    churn_prob = result["score"]
 
-    probs = F.softmax(outputs.logits, dim=1)
-    churn_prob = probs[0][1].item()
-
-    prediction = "Yes" if churn_prob > 0.5 else "No"
+    prediction = "Yes" if result["label"] == "LABEL_1" else "No"
 
     if churn_prob < 0.30:
         risk = "Low"
