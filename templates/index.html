@@ -5,9 +5,15 @@
 
 <title>Customer Churn Prediction</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+*{
+box-sizing:border-box;
+}
 
 body{
     font-family: 'Inter', sans-serif;
@@ -16,7 +22,7 @@ body{
     justify-content:center;
     align-items:flex-start;
     min-height:100vh;
-    padding-top:60px;
+    padding:20px;
     margin:0;
     color:white;
 }
@@ -24,7 +30,8 @@ body{
 .container{
     background:#1e293b;
     padding:35px;
-    width:420px;
+    width:90%;
+    max-width:420px;
     border-radius:12px;
     box-shadow:0 8px 30px rgba(0,0,0,0.6);
 }
@@ -91,6 +98,28 @@ button:hover{
 
 .result p{
     margin:6px 0;
+}
+
+/* Mobile optimization */
+
+@media (max-width:480px){
+
+.container{
+    padding:25px 20px;
+}
+
+h2{
+    font-size:20px;
+}
+
+input,select{
+    font-size:16px;
+}
+
+button{
+    font-size:16px;
+}
+
 }
 
 </style>
