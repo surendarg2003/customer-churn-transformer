@@ -58,8 +58,6 @@ Railway / Render
 Frontend
 HTML
 CSS
-
-Project Structure
 customer-churn-transformer
 │
 ├── main.py                # Flask application
@@ -67,7 +65,6 @@ customer-churn-transformer
 ├── templates
 │   └── index.html         # Web interface
 ├── README.md
-How It Works
 
 The system converts structured data into text format:
 
