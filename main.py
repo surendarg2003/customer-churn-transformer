@@ -6,7 +6,7 @@ from transformers import pipeline
 
 app = Flask(__name__)
 
-# Load transformer pipeline (CPU mode)
+# load transformer pipeline
 classifier = pipeline(
     "text-classification",
     model="distilbert-base-uncased",
@@ -14,9 +14,11 @@ classifier = pipeline(
 )
 
 def predict_churn(text):
+
     result = classifier(text)[0]
 
     churn_prob = result["score"]
+
     prediction = "Yes" if result["label"] == "LABEL_1" else "No"
 
     if churn_prob < 0.30:
@@ -31,11 +33,13 @@ def predict_churn(text):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+
     prediction = None
     probability = None
     risk = None
 
     if request.method == "POST":
+
         gender = request.form.get("gender")
         senior = request.form.get("senior")
         partner = request.form.get("partner")
@@ -69,5 +73,10 @@ def home():
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD:app.py
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
+=======
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+>>>>>>> 7d0d229 (Rename app.py to main.py for Railway deployment):main.py
