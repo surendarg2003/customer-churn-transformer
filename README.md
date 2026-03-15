@@ -58,14 +58,6 @@ Railway / Render
 Frontend
 HTML
 CSS
-customer-churn-transformer
-│
-├── main.py                # Flask application
-├── requirements.txt       # Project dependencies
-├── templates
-│   └── index.html         # Web interface
-├── README.md
-
 The system converts structured data into text format:
 
 Example input:
