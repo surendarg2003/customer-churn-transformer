@@ -1,4 +1,4 @@
-#Customer Churn Prediction using Transformers#
+Customer Churn Prediction using Transformers
 
 A simple end-to-end Machine Learning web application that predicts whether a telecom customer is likely to churn using a Transformer-based NLP model.
 
